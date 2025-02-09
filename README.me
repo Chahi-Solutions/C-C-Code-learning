@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scanf and printf Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        
+        h1, h2 {
+            color: #0366d6;
+            border-bottom: 1px solid #eaecef;
+            padding-bottom: 0.3em;
+        }
+        
+        code {
+            background-color: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+        }
+        
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        
+        .note {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0366d6;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Input/Output in C: scanf and printf Guide</h1>
+
+    <h2>Required Libraries</h2>
+    <pre><code>#include &lt;stdio.h&gt;  // For input/output functions
+#include &lt;string.h&gt; // For string manipulation (optional)</code></pre>
+
+    <h2>scanf and sscanf</h2>
+    <p>These functions are used to read formatted input:</p>
+    <pre><code>// Basic scanf usage
+int age;
+scanf("%d", &age);  // Read an integer
+
+// sscanf reads from a string instead of standard input
+char str[] = "25 John";
+int age;
+char name[20];
+sscanf(str, "%d %s", &age, name);</code></pre>
+
+    <div class="note">
+        <strong>Note:</strong> Always check the return value of scanf/sscanf. It returns the number of successfully read items.
+    </div>
+
+    <h2>printf and sprintf</h2>
+    <p>These functions are used for formatted output:</p>
+    <pre><code>// Basic printf usage
+int age = 25;
+printf("Age: %d\n", age);
+
+// sprintf writes to a string instead of standard output
+char buffer[100];
+sprintf(buffer, "Age: %d", age);</code></pre>
+
+    <h2>Common Format Specifiers</h2>
+    <pre><code>%d    - Integer
+%f    - Float
+%lf   - Double
+%c    - Character
+%s    - String
+%x    - Hexadecimal
+%o    - Octal
+%.2f  - Float with 2 decimal places
+%5d   - Integer with minimum width of 5
+%-5d  - Left-aligned integer with width of 5</code></pre>
+
+    <h2>Example Usage</h2>
+    <pre><code>// Reading multiple values
+int a, b;
+printf("Enter two numbers: ");
+scanf("%d %d", &a, &b);
+
+// Reading a string with spaces
+char fullName[50];
+printf("Enter full name: ");
+scanf(" %[^\n]s", fullName);
+
+// Formatted string creation
+char result[100];
+int score = 95;
+sprintf(result, "Your score is: %d%%", score);
+
+// Reading from a formatted string
+char data[] = "Score: 95 Name: John";
+int score;
+char name[20];
+sscanf(data, "Score: %d Name: %s", &score, name);</code></pre>
+
+    <div class="note">
+        <strong>Best Practices:</strong>
+        <ul>
+            <li>Always check return values for error handling</li>
+            <li>Use buffer size limits to prevent overflow</li>
+            <li>Clear or initialize variables before using them</li>
+            <li>Consider using fgets() for safer string input</li>
+        </ul>
+    </div>
+</body>
+</html>
